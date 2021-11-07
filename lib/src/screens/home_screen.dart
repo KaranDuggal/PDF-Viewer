@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
 import 'pdf_view_screen.dart';
-
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -13,7 +12,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String url = "http://africau.edu/images/default/sampe.pdf";
   bool isFileGet = false;
-  String pathPDF = '';
+  String pdfUrl = '';
   @override
   void initState() {
     super.initState();
@@ -25,28 +24,58 @@ class _HomeScreenState extends State<HomeScreen> {
       appBar: AppBar(
         title: const Text('PDF Viewer App'),
       ),
-      body: Column(
-        children: [
-          ElevatedButton(
-            onPressed: ()async {
-              FilePickerResult ? result = await FilePicker.platform.pickFiles(
-                type: FileType.custom,
-                allowedExtensions: ['pdf'],
-              );
-              if(result != null){
-                pathPDF = result.files.single.path!;
-                Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=> PDFViewScreen(type: "fromStorage", filepath: pathPDF, url: "no")));
-              }
-            },
-            child: const Text("From Storage")
-          ),
-          ElevatedButton(
-            onPressed: ()async {
-              Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=> PDFViewScreen(type: "fromLink", filepath: pathPDF, url: "http://africau.edu/images/default/sample.pdf")));
-            },
-            child: const Text("from link")
-          )
-        ],
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(),
+                minimumSize: const Size(200, 50),
+              ),
+              onPressed: ()async {
+                FilePickerResult ? result = await FilePicker.platform.pickFiles(
+                  type: FileType.custom,
+                  allowedExtensions: ['pdf'],
+                );
+                if(result != null){
+                  Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=> PDFViewScreen(type: "fromStorage", filepath: result.files.single.path!, url: "no")));
+                }
+              },
+              child: const Text("From Storage")
+            ),
+            const SizedBox(height: 20,),
+            Container(
+              margin: const EdgeInsets.symmetric(horizontal: 25),
+              child: TextFormField(
+                keyboardType: TextInputType.text,
+                onFieldSubmitted: (value) async{
+                  pdfUrl = value;
+                  Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=> PDFViewScreen(type: "fromLink", filepath: "", url: pdfUrl)));
+                },
+                decoration: const InputDecoration(
+                  hintText: "Paste your PDF Link Here",
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (value){
+                  pdfUrl = value;
+                },
+              )
+            ),
+            const SizedBox(height: 20,),
+            ElevatedButton(
+              style: ElevatedButton.styleFrom(
+                shape: const StadiumBorder(),
+                minimumSize: const Size(200, 50),
+              ),
+              onPressed: ()async {
+                Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=> PDFViewScreen(type: "fromLink", filepath: "", url: pdfUrl)));
+              },
+              child: const Text("from Link"),
+              
+            ),
+          ],
+        ),
       )
     );
   }
