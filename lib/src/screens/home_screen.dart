@@ -10,8 +10,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  String url = "http://africau.edu/images/default/sampe.pdf";
-  bool isFileGet = false;
+  // String url = "http://africau.edu/images/default/sample.pdf";
   String pdfUrl = '';
   @override
   void initState() {
