@@ -48,25 +48,6 @@ class _HomeScreenState extends State<HomeScreen> {
           )
         ],
       )
-      // body: Container(
-      //   child: isFileGet ? Center(
-      //     child: SfPdfViewer.network(url)
-      //   ): ElevatedButton(
-      //     onPressed: () async {
-      //       // Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=>const PDFViewScreen(text: "todo")));
-      //       // FilePickerResult ? result = await FilePicker.platform.pickFiles(
-      //       //   // type: FileType.custom,
-      //       //   allowedExtensions: ['pdf'],
-      //       // );
-      //       setState(() {
-      //           isFileGet = true;
-      //         // if (result != null){
-      //         //   pathPDF = result.files.single.path!;
-      //         // }
-      //       });
-      //     }, 
-      //     child: const Text('Select File')) 
-      // )
     );
   }
 }
