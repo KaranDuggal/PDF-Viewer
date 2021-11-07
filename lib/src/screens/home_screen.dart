@@ -26,10 +26,6 @@ class _HomeScreenState extends State<HomeScreen> {
         'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
         key: _pdfViewerKey,
       ),
-      // body: SfPdfViewer.network(
-      //   'https://cdn.syncfusion.com/content/PDFViewer/flutter-succinctly.pdf',
-      //   key: _pdfViewerKey,
-      // ),
     );
   }
 }
