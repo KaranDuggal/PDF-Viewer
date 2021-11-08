@@ -11,6 +11,7 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   // String url = "http://africau.edu/images/default/sample.pdf";
+  bool isloading = false;
   String pdfUrl = '';
   @override
   void initState() {
@@ -33,6 +34,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 minimumSize: const Size(200, 50),
               ),
               onPressed: ()async {
+                bool _validURL = Uri.parse("http://africau.edu/images/default/sampl.pdf").isAbsolute;
+                print("url check $_validURL");
                 FilePickerResult ? result = await FilePicker.platform.pickFiles(
                   type: FileType.custom,
                   allowedExtensions: ['pdf'],
