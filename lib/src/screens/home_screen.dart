@@ -70,8 +70,8 @@ class _HomeScreenState extends State<HomeScreen> {
                     }else{
                       CoolAlert.show(
                          context: context,
-                         type: CoolAlertType.success,
-                         text: "Your transaction was successful!",
+                         type: CoolAlertType.error,
+                         text: "Invalid URL",
                       );
                     }
                   }
@@ -105,8 +105,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   }else{
                     CoolAlert.show(
                        context: context,
-                       type: CoolAlertType.success,
-                       text: "Your transaction was successful!",
+                       type: CoolAlertType.error,
+                       text: "Invalid URL",
                     );
                   }
                 }
