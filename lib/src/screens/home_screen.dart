@@ -1,7 +1,12 @@
 // import 'dart:io';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:pdf_viewer/src/services/api_service.dart';
 import 'pdf_view_screen.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:cool_alert/cool_alert.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -10,9 +15,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // String url = "http://africau.edu/images/default/sample.pdf";
+  String url = "http://africau.edu/images/default/sample.pdf";
   bool isloading = false;
   String pdfUrl = '';
+  String pdfPath = '';
   @override
   void initState() {
     super.initState();
@@ -33,9 +39,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 shape: const StadiumBorder(),
                 minimumSize: const Size(200, 50),
               ),
-              onPressed: ()async {
-                bool _validURL = Uri.parse("http://africau.edu/images/default/sampl.pdf").isAbsolute;
-                print("url check $_validURL");
+              onPressed: ()async {                
                 FilePickerResult ? result = await FilePicker.platform.pickFiles(
                   type: FileType.custom,
                   allowedExtensions: ['pdf'],
@@ -53,7 +57,24 @@ class _HomeScreenState extends State<HomeScreen> {
                 keyboardType: TextInputType.text,
                 onFieldSubmitted: (value) async{
                   pdfUrl = value;
-                  Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=> PDFViewScreen(type: "fromLink", filepath: "", url: pdfUrl)));
+                  bool _validURL = Uri.parse("http://africau.edu/images/default/sample.pdf").isAbsolute;
+                  if(_validURL){
+                    final dirList = await getExternalStoragePath();
+                    final path = dirList![0].path;
+                    final file = File("$path/filename.pdf");
+                    bool data = await ApiService().downloadAndSaveInStorage(pdfUrl,file.path);
+                    if(data){
+                      pdfPath = file.path;
+                      Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=> PDFViewScreen(type: "fromStorage", filepath: pdfPath, url: pdfUrl)));
+                      return;
+                    }else{
+                      CoolAlert.show(
+                         context: context,
+                         type: CoolAlertType.success,
+                         text: "Your transaction was successful!",
+                      );
+                    }
+                  }
                 },
                 decoration: const InputDecoration(
                   hintText: "Paste your PDF Link Here",
@@ -71,14 +92,33 @@ class _HomeScreenState extends State<HomeScreen> {
                 minimumSize: const Size(200, 50),
               ),
               onPressed: ()async {
-                Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=> PDFViewScreen(type: "fromLink", filepath: "", url: pdfUrl)));
+                bool _validURL = Uri.parse("http://africau.edu/images/default/sample.pdf").isAbsolute;
+                if(_validURL){
+                  final dirList = await getExternalStoragePath();
+                  final path = dirList![0].path;
+                  final file = File("$path/filename.pdf");
+                  bool data = await ApiService().downloadAndSaveInStorage(pdfUrl,file.path);
+                  if(data){
+                    pdfPath = file.path;
+                    Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=> PDFViewScreen(type: "fromStorage", filepath: pdfPath, url: pdfUrl)));
+                    return;
+                  }else{
+                    CoolAlert.show(
+                       context: context,
+                       type: CoolAlertType.success,
+                       text: "Your transaction was successful!",
+                    );
+                  }
+                }
               },
               child: const Text("from Link"),
-              
             ),
           ],
         ),
       )
     );
   }
+}
+Future <List<Directory>?> getExternalStoragePath() async{
+  return getExternalStorageDirectories(type: StorageDirectory.documents);
 }
