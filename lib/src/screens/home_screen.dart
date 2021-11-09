@@ -46,12 +46,12 @@ class _HomeScreenState extends State<HomeScreen> {
 
           ),
           BottomNavyBarItem(
-            icon: const Icon(Icons.home),
+            icon: const Icon(Icons.storage),
             title: const Text("From Storage"),
             activeColor: Colors.red,
           ),
           BottomNavyBarItem(
-            icon: const Icon(Icons.home),
+            icon: const Icon(Icons.open_in_browser),
             title: const Text("By URL"),
             activeColor: Colors.red,
           ),
