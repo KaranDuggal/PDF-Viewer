@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:url_launcher/url_launcher.dart';
 class AboutUs extends StatelessWidget {
   const AboutUs({ Key? key }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    String gitHubUrl = "https://github.com/KaranDuggal/PDF-Viewer";
     return Center(
       child: Card(
         child: SizedBox(
@@ -33,7 +35,8 @@ class AboutUs extends StatelessWidget {
                 elevation: 8,
                 shadowColor: Colors.blue,
               ),
-              onPressed: ()async {                
+              onPressed: ()async {  
+                await launch(gitHubUrl);  
               },
               child:  SizedBox(
                 width: 120,
