@@ -44,7 +44,16 @@ class ByLink extends StatelessWidget {
                 },
                 decoration: const InputDecoration(
                   hintText: "Paste your PDF Link Here",
-                  border: OutlineInputBorder(),
+                  enabledBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColors.black
+                    )
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderSide: BorderSide(
+                      color: MyColors.black
+                    )
+                  )
                 ),
                 onChanged: (value){
                   pdfUrl = value;
