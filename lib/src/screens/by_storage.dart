@@ -25,6 +25,8 @@ class _ByStorageState extends State<ByStorage> {
               style: ElevatedButton.styleFrom(
                 shape: const StadiumBorder(),
                 minimumSize: const Size(200, 50),
+                elevation: 8,
+                shadowColor: Colors.blue,
               ),
               onPressed: ()async {                
                 FilePickerResult ? result = await FilePicker.platform.pickFiles(
