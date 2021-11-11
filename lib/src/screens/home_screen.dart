@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pdf_viewer/src/screens/about_us_screen.dart';
 import 'package:pdf_viewer/src/screens/by_link_screen.dart';
 import 'package:pdf_viewer/src/screens/by_storage.dart';
-import 'package:pdf_viewer/src/screens/list_screen.dart';
+// import 'package:pdf_viewer/src/screens/list_screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
 
@@ -20,7 +20,7 @@ class _HomeScreenState extends State<HomeScreen> {
   }
 
   List listOfScreens = [
-    const PdfList(),
+    // const PdfList(),
     const ByStorage(),
     const ByLink(),
     const AboutUs(),
@@ -39,12 +39,12 @@ class _HomeScreenState extends State<HomeScreen> {
           });
         },
         items: <BottomNavyBarItem>[
-          BottomNavyBarItem(
-            icon: const Icon(Icons.home),
-            title: const Text("home"),
-            activeColor: Colors.blue,
+          // BottomNavyBarItem(
+          //   icon: const Icon(Icons.home),
+          //   title: const Text("home"),
+          //   activeColor: Colors.blue,
 
-          ),
+          // ),
           BottomNavyBarItem(
             icon: const Icon(Icons.storage),
             title: const Text("By Storage"),
