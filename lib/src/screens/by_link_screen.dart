@@ -76,7 +76,16 @@ class ByLink extends StatelessWidget {
                   }
                 }
               },
-              child: const Text("from Link"),
+              child: SizedBox(
+                width: 200,
+                child: Row( 
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    Icon(Icons.open_in_browser),
+                    Text("From URL"),
+                  ],
+                ),
+              ),
             ),
           ],
         )

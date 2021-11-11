@@ -35,7 +35,16 @@ class _ByStorageState extends State<ByStorage> {
                   Navigator.of(context).push(MaterialPageRoute(builder: (contaxt)=> PDFViewScreen(type: "fromStorage", filepath: result.files.single.path!, url: "no")));
                 }
               },
-              child: const Text("From Storage")
+              child:  SizedBox(
+                width: 200,
+                child: Row( 
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: const [
+                    Icon(Icons.storage),
+                    Text("From Storage"),
+                  ],
+                ),
+              )
             ),
             // const SizedBox(height: 20,),
             // Container(
