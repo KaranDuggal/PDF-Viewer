@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:cool_alert/cool_alert.dart';
 import 'package:pdf_viewer/src/services/api_service.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:pdf_viewer/src/utils/constant.dart';
 import 'pdf_view_screen.dart';
 import 'dart:io';
 class ByLink extends StatelessWidget {
@@ -56,7 +57,8 @@ class ByLink extends StatelessWidget {
                 shape: const StadiumBorder(),
                 minimumSize: const Size(200, 50),
                 elevation: 8,
-                shadowColor: Colors.blue,
+                shadowColor: MyColors.black,
+                primary: MyColors.black
               ),
               onPressed: ()async {
                 bool _validURL = Uri.parse("http://africau.edu/images/default/sample.pdf").isAbsolute;

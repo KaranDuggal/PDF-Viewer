@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:pdf_viewer/src/screens/about_us_screen.dart';
 import 'package:pdf_viewer/src/screens/by_link_screen.dart';
 import 'package:pdf_viewer/src/screens/by_storage.dart';
+import 'package:pdf_viewer/src/utils/constant.dart';
 // import 'package:pdf_viewer/src/screens/list_screen.dart';
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -30,6 +31,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text('PDF Viewer App'),
+        backgroundColor: MyColors.black,
       ),
       bottomNavigationBar: BottomNavyBar(
         selectedIndex: currentIndex,
@@ -42,23 +44,23 @@ class _HomeScreenState extends State<HomeScreen> {
           // BottomNavyBarItem(
           //   icon: const Icon(Icons.home),
           //   title: const Text("home"),
-          //   activeColor: Colors.blue,
+          //   activeColor: MyColors.black,
 
           // ),
           BottomNavyBarItem(
             icon: const Icon(Icons.storage),
             title: const Text("By Storage"),
-            activeColor: Colors.blue,
+            activeColor: MyColors.black,
           ),
           BottomNavyBarItem(
             icon: const Icon(Icons.open_in_browser),
             title: const Text("By URL"),
-            activeColor: Colors.blue,
+            activeColor: MyColors.black,
           ),
           BottomNavyBarItem(
             icon: const Icon(Icons.person),
             title: const Text("About Us"),
-            activeColor: Colors.blue,
+            activeColor: MyColors.black,
           ),
         ],
       ),

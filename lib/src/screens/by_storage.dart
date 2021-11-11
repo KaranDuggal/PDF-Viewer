@@ -3,6 +3,7 @@ import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 // import 'package:pdf_viewer/src/services/api_service.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:pdf_viewer/src/utils/constant.dart';
 import 'pdf_view_screen.dart';
 import 'dart:io';
 
@@ -26,7 +27,8 @@ class _ByStorageState extends State<ByStorage> {
                 shape: const StadiumBorder(),
                 minimumSize: const Size(200, 50),
                 elevation: 8,
-                shadowColor: Colors.blue,
+                shadowColor: MyColors.black,
+                primary: MyColors.black
               ),
               onPressed: ()async {                
                 FilePickerResult ? result = await FilePicker.platform.pickFiles(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:pdf_viewer/src/utils/constant.dart';
 import 'package:url_launcher/url_launcher.dart';
 class AboutUs extends StatelessWidget {
   const AboutUs({ Key? key }) : super(key: key);
@@ -33,7 +34,8 @@ class AboutUs extends StatelessWidget {
                 shape: const StadiumBorder(),
                 minimumSize: const Size(200, 50),
                 elevation: 8,
-                shadowColor: Colors.blue,
+                shadowColor: MyColors.black,
+                primary: MyColors.black
               ),
               onPressed: ()async {  
                 await launch(gitHubUrl);  
@@ -53,7 +55,7 @@ class AboutUs extends StatelessWidget {
           )
         ),
         elevation: 8,
-        shadowColor: Colors.blue,
+        shadowColor: MyColors.black,
         // shape: BeveledRectangleBorder(
         //     borderRadius: BorderRadius.circular(15)
         // ),
