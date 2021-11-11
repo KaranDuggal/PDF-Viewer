@@ -30,6 +30,8 @@ class AboutUs extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                 shape: const StadiumBorder(),
                 minimumSize: const Size(200, 50),
+                elevation: 8,
+                shadowColor: Colors.blue,
               ),
               onPressed: ()async {                
               },
